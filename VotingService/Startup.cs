@@ -12,6 +12,9 @@ namespace VotingService
             // Configure Web API for self-host. 
             HttpConfiguration config = new HttpConfiguration();
 
+            config.MapHttpAttributeRoutes();			// NEW
+            config.Formatters.Add(new HtmlMediaFormatter());  // NEW
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
@@ -19,6 +22,7 @@ namespace VotingService
             );
 
             appBuilder.UseWebApi(config);
+
         }
     }
 }
